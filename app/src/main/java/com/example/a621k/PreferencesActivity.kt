@@ -1,74 +1,64 @@
 package com.example.a621k
 
+import android.annotation.SuppressLint
+import android.content.SharedPreferences
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
-import com.example.a621k.Manager.PrefsManager
+import kotlinx.android.synthetic.main.activity_preference.*
+import java.lang.Double.doubleToRawLongBits
 
 class PreferencesActivity : AppCompatActivity() {
-
+    var sharedPreferences: SharedPreferences? = null
+    @SuppressLint("CommitPrefEdits")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_preference)
-        initViews()
-    }
 
-    private fun initViews() {
-        val et_pword= findViewById<EditText>(R.id.et_email)
-        val b_save = findViewById<Button>(R.id.b_save)
-        val b_save1 = findViewById<Button>(R.id.b_save1)
-        val b_save2 = findViewById<Button>(R.id.b_save2)
-        val b_save3 = findViewById<Button>(R.id.b_save3)
+        sharedPreferences = getSharedPreferences("userInfo", MODE_PRIVATE)
 
-        b_save.setOnClickListener {
+        b_save.setOnClickListener{
+            val emailValue = et_email.text.toString().toInt()
 
-            val pword: Int = et_pword.text.toString().toInt()
-            PrefsManager.getInstance(this)!!.saveData(1, pword)
-            val data = PrefsManager.getInstance(this)!!.getData(1)
-            saveEmail(data)
+            val editor = sharedPreferences?.edit()
+            editor?.putInt("emailValue", emailValue)
+            editor?.apply()
 
+            val getEmailValue: Int? = sharedPreferences?.getInt("emailValue", emailValue)
+            et1.setText(getEmailValue.toString())
         }
 
         b_save1.setOnClickListener{
-            val long: Long = et_pword.text.toString().toLong()
-            PrefsManager.getInstance(this)!!.saveDataLong(1, long)
-            val data1 = PrefsManager.getInstance(this)!!.getDataLong(1)
-            saveLong(data1)
+            val emailValue = dable.text.toString()
+
+            val editor = sharedPreferences?.edit()
+            editor?.putString("emailValue", emailValue)
+            editor?.apply()
+
+            val getEmailValue: String? = sharedPreferences?.getString("emailValue", emailValue)
+            et2.setText(getEmailValue)
         }
 
         b_save2.setOnClickListener{
-            val long: Boolean = et_pword.text.toString().toBoolean()
-            PrefsManager.getInstance(this)!!.saveDataBoolean(1, long)
-            val data1 = PrefsManager.getInstance(this)!!.getDataBoolean(1)
-            saveBoolean(data1)
+            val emailValue = bool.text.toString().toBoolean()
+
+            val editor = sharedPreferences?.edit()
+            editor?.putBoolean("emailValue", emailValue)
+            editor?.apply()
+
+            val getEmailValue: Boolean? = sharedPreferences?.getBoolean("emailValue", emailValue)
+            et3.setText(getEmailValue.toString())
+        }
+
+        b_save3.setOnClickListener{
+            val emailValue = bool.text.toString().toLong()
+
+            val editor = sharedPreferences?.edit()
+            editor?.putLong("emailValue", emailValue)
+            editor?.apply()
+
+            val getEmailValue: Long? = sharedPreferences?.getLong("emailValue", emailValue)
+            et4.setText(getEmailValue.toString())
         }
     }
 
-    private fun saveEmail(email: Int?) {
-        val prefs = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
-        val editor = prefs.edit()
-        if (email != null) {
-            editor.putInt("email", email)
-        }
-        editor.apply()
-    }
-
-    private fun saveLong(email: Long?) {
-        val prefs = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
-        val editor = prefs.edit()
-        if (email != null) {
-            editor.putLong("email", email)
-        }
-        editor.apply()
-    }
-
-    private fun saveBoolean(email: Boolean?) {
-        val prefs = applicationContext.getSharedPreferences("MyPref", MODE_PRIVATE)
-        val editor = prefs.edit()
-        if (email != null) {
-            editor.putBoolean("email", email)
-        }
-        editor.apply()
-    }
 }

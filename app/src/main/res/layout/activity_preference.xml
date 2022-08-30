@@ -17,20 +17,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:hint="Password" />
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="int type only" />
 
-        <Button
-            android:id="@+id/b_save"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Save" />
+            <EditText
+                android:id="@+id/et1"
+                android:layout_width="match_parent"
+                android:hint="savedData"
+                android:layout_height="40dp"/>
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/b_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Save" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +47,13 @@
                 android:id="@+id/dable"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Password" />
+                android:hint="double type only" />
+
+            <EditText
+                android:id="@+id/et2"
+                android:layout_width="match_parent"
+                android:hint="savedData"
+                android:layout_height="40dp"/>
 
             <Button
                 android:id="@+id/b_save1"
@@ -61,7 +73,13 @@
                 android:id="@+id/bool"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Password" />
+                android:hint="boolean type only" />
+
+            <EditText
+                android:id="@+id/et3"
+                android:layout_width="match_parent"
+                android:hint="savedData"
+                android:layout_height="40dp"/>
 
             <Button
                 android:id="@+id/b_save2"
@@ -81,7 +99,13 @@
                 android:id="@+id/longer"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:hint="Password" />
+                android:hint="long type only" />
+
+            <EditText
+                android:id="@+id/et4"
+                android:layout_width="match_parent"
+                android:hint="savedData"
+                android:layout_height="40dp"/>
 
             <Button
                 android:id="@+id/b_save3"
@@ -93,5 +117,4 @@
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
